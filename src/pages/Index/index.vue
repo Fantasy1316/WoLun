@@ -1,5 +1,5 @@
 <template>
-  <view class="container">
+  <div class="container">
     <custom-nav></custom-nav>
     <div class="content">
       <!-- 搜索 -->
@@ -27,7 +27,7 @@
             @click="handlePlayCurrentSong(item)"
           >
             <div class="item-cover">
-              <!-- <img :src="item.coverImg" class="item-cover--image" /> -->
+              <img :src="item.coverImg" class="item-cover--image" />
             </div>
             <div class="item-info">
               <p class="item-info--name">{{ item.name }}</p>
@@ -53,7 +53,7 @@
             :key="item.id"
           >
             <div class="item-top">
-              <!-- <img src="../../assets/images/fantic.png" class="item-top--pic" /> -->
+              <img src="http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg" class="item-top--pic" />
               <p class="item-top--count">
                 <i class="iconfont icon-zhuanji"></i>
                 {{ item.count }}首
@@ -80,7 +80,7 @@
             :key="item.id"
           >
             <div class="item-cover">
-              <!-- <img :src="item.coverImg" class="item-cover--image" /> -->
+              <img :src="item.coverImg" class="item-cover--image" />
             </div>
             <div class="item-info">
               <p class="item-info--name">{{ item.name }}</p>
@@ -94,14 +94,13 @@
     <!-- 迷你播放器 -->
     <mini-player></mini-player>
     <custom-bar></custom-bar>
-  </view>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import MiniPlayer from '@/components/MiniPlayer/index.vue'
-// import coverImg from '../../assets/images/fantic.png'
 
 const store = useStore()
 
@@ -112,7 +111,7 @@ const rescoomedSongList = ref([
     singer: '周杰伦',
     ablum: '《范特西》',
     publicDate: '2001年',
-    coverImg: ''
+    coverImg: "http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
   },
   {
     id: 1,
@@ -120,7 +119,7 @@ const rescoomedSongList = ref([
     singer: '周杰伦',
     ablum: '《十一月的肖邦》',
     publicDate: '2004年',
-    coverImg: ''
+    coverImg: "http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
   },
   {
     id: 2,
@@ -128,7 +127,7 @@ const rescoomedSongList = ref([
     singer: '周杰伦/杨代瑞',
     ablum: '《等你下课》',
     publicDate: '2020年',
-    coverImg: ''
+    coverImg: "http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
   },
   {
     id: 3,
@@ -136,7 +135,7 @@ const rescoomedSongList = ref([
     singer: '周杰伦/浪花兄弟',
     ablum: '《你是我的OK蹦》',
     publicDate: '2016年',
-    coverImg: ''
+    coverImg: "http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
   },
   {
     id: 4,
@@ -144,7 +143,7 @@ const rescoomedSongList = ref([
     singer: '周杰伦',
     ablum: '《我落泪情绪零碎》',
     publicDate: '2021年',
-    coverImg: ''
+    coverImg: "http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
   }
 ])
 
@@ -183,7 +182,7 @@ const liveSongList = ref([
     singer: '周杰伦',
     ablum: '2020年地表最强嘉年华演唱会-深圳站',
     publicDate: '2021年',
-    coverImg: ''
+    coverImg: "http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
   },
   {
     id: 1,
@@ -191,7 +190,7 @@ const liveSongList = ref([
     singer: '周杰伦',
     ablum: '2010年无与伦比演唱会-台北站',
     publicDate: '2021年',
-    coverImg: ''
+    coverImg: "http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
   },
   {
     id: 2,
@@ -199,11 +198,11 @@ const liveSongList = ref([
     singer: '周杰伦',
     ablum: '2017年世界巡回演唱会-武汉站',
     publicDate: '2021年',
-    coverImg: ''
+    coverImg: "http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
   }
 ])
 
-const handlePlayCurrentSong = (data) => {
+const handlePlayCurrentSong = (data: any) => {
   const { id, name, singer, ablum } = data
   store.commit('SET_CURRENTPLAYSONG', { id, name, singer, ablum })
   store.commit('SET_PLAYERSTATUS', 1)
