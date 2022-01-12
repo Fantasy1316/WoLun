@@ -66,7 +66,7 @@ watch(
   bottom: 136rpx;
   height: 0;
   background-color: rgba(255, 255, 255, 0.96);
-  border-bottom: 0.5rpx solid #f1f1f1;
+  border-top: 0.5rpx solid #f1f1f1;
   overflow: hidden;
   z-index: 9;
   transition: all 0.3s ease-in-out;
