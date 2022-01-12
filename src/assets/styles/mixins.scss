@@ -1,0 +1,17 @@
+@mixin --mixins-container($color: #fff) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $color;
+}
+
+@mixin --mixins-ellipsis($line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line; //多行在这里修改数字即可
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}

@@ -1,0 +1,46 @@
+{
+  "pages": [
+    {
+      "path": "pages/Index/index",
+      "style": {
+        "navigationBarTitleText": "WoLun"
+      }
+    },
+    {
+      "path": "pages/Classific/index",
+      "style": {
+        "navigationBarTitleText": "分类"
+      }
+    },
+    {
+      "path": "pages/Mine/index",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#FF88B4",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/Index/index",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/Classific/index",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/Mine/index",
+        "text": "我的"
+      }
+    ]
+  }
+}
