@@ -3,10 +3,12 @@ const state = {
   currentPlaySong: {
     // 当前播放歌曲信息
     id: '',
-    name: '',
-    singer: '',
-    ablum: '',
-    coverImg: ''
+    name: '等你下课（with杨代瑞）',
+    singer: '周杰伦',
+    ablum: '《范特西》',
+    coverImg: 'http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg',
+    bgiUrl:
+      'http://img.fechen.cn/uploadfile/static/2022/01/13/0A40CA801895449E80ECD91ED1B09297-bgi.jpg'
   },
   playMode: 0 // 0：随机播放，1：单曲循环，2：顺序播放
 }

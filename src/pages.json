@@ -17,6 +17,18 @@
       "style": {
         "navigationBarTitleText": "我的"
       }
+    },
+    {
+      "path": "pages/SongsList/index",
+      "style": {
+        "navigationBarTitleText": "精选歌单"
+      }
+    },
+    {
+      "path": "pages/SongDetail/index",
+      "style": {
+        "navigationBarTitleText": "播放详情"
+      }
     }
   ],
   "globalStyle": {
@@ -42,5 +54,6 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "requiredBackgroundModes": ["audio"]
 }

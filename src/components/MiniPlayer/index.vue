@@ -8,7 +8,7 @@
       <div class="cover">
         <div class="cover-pic">
           <img
-            src="../../assets/images/fantic.png"
+            :src="currentPlaySong.coverImg ? currentPlaySong.coverImg : ''"
             class="cover-pic--image"
             alt=""
           />
@@ -38,10 +38,11 @@ const store = useStore()
 const playerStatus = computed(() => store.state.player.playerStatus)
 const currentPlaySong = computed(() => store.state.player.currentPlaySong)
 
+console.log(currentPlaySong.value.coverImg)
+
+/** 播放列表展示与否 */
 const playerListShow = ref(false)
 const handleSetPlayerListShow = () => {
-  console.log(playerListShow)
-
   playerListShow.value = true
 }
 

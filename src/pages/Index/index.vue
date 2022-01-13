@@ -53,7 +53,10 @@
             :key="item.id"
           >
             <div class="item-top">
-              <img src="http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg" class="item-top--pic" />
+              <img
+                src="http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
+                class="item-top--pic"
+              />
               <p class="item-top--count">
                 <i class="iconfont icon-zhuanji"></i>
                 {{ item.count }}首
@@ -111,7 +114,7 @@ const rescoomedSongList = ref([
     singer: '周杰伦',
     ablum: '《范特西》',
     publicDate: '2001年',
-    coverImg: "http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
+    coverImg: 'http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg'
   },
   {
     id: 1,
@@ -119,7 +122,7 @@ const rescoomedSongList = ref([
     singer: '周杰伦',
     ablum: '《十一月的肖邦》',
     publicDate: '2004年',
-    coverImg: "http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
+    coverImg: 'http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg'
   },
   {
     id: 2,
@@ -127,7 +130,8 @@ const rescoomedSongList = ref([
     singer: '周杰伦/杨代瑞',
     ablum: '《等你下课》',
     publicDate: '2020年',
-    coverImg: "http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
+    coverImg:
+      'http://img.fechen.cn/uploadfile/static/2022/01/13/0A40CA801895449E80ECD91ED1B09297.jpg'
   },
   {
     id: 3,
@@ -135,7 +139,7 @@ const rescoomedSongList = ref([
     singer: '周杰伦/浪花兄弟',
     ablum: '《你是我的OK蹦》',
     publicDate: '2016年',
-    coverImg: "http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
+    coverImg: 'http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg'
   },
   {
     id: 4,
@@ -143,7 +147,7 @@ const rescoomedSongList = ref([
     singer: '周杰伦',
     ablum: '《我落泪情绪零碎》',
     publicDate: '2021年',
-    coverImg: "http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
+    coverImg: 'http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg'
   }
 ])
 
@@ -182,7 +186,7 @@ const liveSongList = ref([
     singer: '周杰伦',
     ablum: '2020年地表最强嘉年华演唱会-深圳站',
     publicDate: '2021年',
-    coverImg: "http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
+    coverImg: 'http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg'
   },
   {
     id: 1,
@@ -190,7 +194,7 @@ const liveSongList = ref([
     singer: '周杰伦',
     ablum: '2010年无与伦比演唱会-台北站',
     publicDate: '2021年',
-    coverImg: "http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
+    coverImg: 'http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg'
   },
   {
     id: 2,
@@ -198,14 +202,32 @@ const liveSongList = ref([
     singer: '周杰伦',
     ablum: '2017年世界巡回演唱会-武汉站',
     publicDate: '2021年',
-    coverImg: "http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg"
+    coverImg: 'http://img.fechen.cn/uploadfile/static/2022/01/11/fantic.jpg'
   }
 ])
 
 const handlePlayCurrentSong = (data: any) => {
-  const { id, name, singer, ablum } = data
-  store.commit('SET_CURRENTPLAYSONG', { id, name, singer, ablum })
+  const { id, name, singer, ablum, coverImg } = data
+  const bgiUrl =
+    'http://img.fechen.cn/uploadfile/static/2022/01/13/0A40CA801895449E80ECD91ED1B09297-bgi.jpg'
+  store.commit('SET_CURRENTPLAYSONG', {
+    id,
+    name,
+    singer,
+    ablum,
+    coverImg,
+    bgiUrl
+  })
   store.commit('SET_PLAYERSTATUS', 1)
+  handlePathTo('/pages/SongDetail/index')
+}
+
+const handlePathTo = (path: string, query?: any) => {
+  console.log(path)
+
+  uni.navigateTo({
+    url: path
+  })
 }
 </script>
 
