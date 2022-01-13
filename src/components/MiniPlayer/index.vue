@@ -21,7 +21,7 @@
         <!-- <i class="iconfont icon-zanting"></i> -->
         <i class="iconfont icon-bofang"></i>
       </div>
-      <i class="iconfont icon-caidan" @click="playerListShow = true"></i>
+      <i class="iconfont icon-caidan" @click="handleSetPlayerListShow"></i>
     </div>
 
     <!-- 播放列表 -->
@@ -39,6 +39,11 @@ const playerStatus = computed(() => store.state.player.playerStatus)
 const currentPlaySong = computed(() => store.state.player.currentPlaySong)
 
 const playerListShow = ref(false)
+const handleSetPlayerListShow = () => {
+  console.log(playerListShow)
+
+  playerListShow.value = true
+}
 
 // 添加层级样式
 const miniPlayerStyle = ref({})
