@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <custom-nav></custom-nav>
+    <custom-nav title="WoLun"></custom-nav>
     <div class="content">
       <!-- 搜索 -->
       <div class="search">
@@ -104,8 +104,11 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import MiniPlayer from '@/components/MiniPlayer/index.vue'
+import { useNavigateMethods } from '@/utils/global'
 
 const store = useStore()
+
+const { handleNavigateTo } = useNavigateMethods()
 
 const rescoomedSongList = ref([
   {
@@ -219,15 +222,7 @@ const handlePlayCurrentSong = (data: any) => {
     bgiUrl
   })
   store.commit('SET_PLAYERSTATUS', 1)
-  handlePathTo('/pages/SongDetail/index')
-}
-
-const handlePathTo = (path: string, query?: any) => {
-  console.log(path)
-
-  uni.navigateTo({
-    url: path
-  })
+  handleNavigateTo('/pages/SongDetail/index')
 }
 </script>
 

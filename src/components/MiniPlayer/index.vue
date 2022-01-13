@@ -4,7 +4,7 @@
     :class="{ miniplayer__show: currentPlaySong.id !== '' }"
     :style="miniPlayerStyle"
   >
-    <div class="miniplayer-content">
+    <div class="miniplayer-content" @click="handleNavigateTo('/pages/SongDetail/index')">
       <div class="cover">
         <div class="cover-pic">
           <img
@@ -21,7 +21,7 @@
         <!-- <i class="iconfont icon-zanting"></i> -->
         <i class="iconfont icon-bofang"></i>
       </div>
-      <i class="iconfont icon-caidan" @click="handleSetPlayerListShow"></i>
+      <i class="iconfont icon-caidan" @click.stop="handleSetPlayerListShow"></i>
     </div>
 
     <!-- 播放列表 -->
@@ -33,12 +33,12 @@
 import { computed, ref, watch } from 'vue'
 import { useStore } from 'vuex'
 import PlayerList from '../PlayerList/index.vue'
+import { useNavigateMethods } from '@/utils/global'
 
 const store = useStore()
-const playerStatus = computed(() => store.state.player.playerStatus)
 const currentPlaySong = computed(() => store.state.player.currentPlaySong)
 
-console.log(currentPlaySong.value.coverImg)
+const { handleNavigateTo } = useNavigateMethods()
 
 /** 播放列表展示与否 */
 const playerListShow = ref(false)
@@ -51,8 +51,6 @@ const miniPlayerStyle = ref({})
 watch(
   () => currentPlaySong.value,
   (newVal, oldVal) => {
-    console.log(newVal)
-
     if (newVal) {
       setTimeout(() => {
         miniPlayerStyle.value = {

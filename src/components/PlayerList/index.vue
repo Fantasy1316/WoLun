@@ -221,6 +221,7 @@ watch(
 
       .item-name {
         flex: 1;
+        font-size: 32rpx;
         @include --mixins-ellipsis(1);
 
         &--singer {
