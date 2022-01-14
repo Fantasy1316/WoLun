@@ -27,6 +27,22 @@ watch(
   }
 )
 
+uni.onBackgroundAudioPlay(async () => {
+  console.log('onPlay')
+  handlePlayerEvent()
+})
+
+uni.onBackgroundAudioPause(async () => {
+  console.log('onPause')
+  handlePlayerEvent()
+})
+
+const handlePlayerEvent = async () => {
+  const state = await uni.getBackgroundAudioPlayerState()
+  const { duration, currentPosition, status } = state as any
+  store.commit('SET_PLAYERSTATE', { duration, currentPosition, status })
+}
+
 onLaunch(() => {
   console.log('App Launch')
 })

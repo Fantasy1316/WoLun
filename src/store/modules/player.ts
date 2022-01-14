@@ -1,5 +1,10 @@
 const state = {
-  playerStatus: 0, // 0:隐藏 1:展示
+  playerState: {
+    // 播放器状态
+    duration: 0, // 总时长
+    currentPosition: 0, // 当前时长
+    status: 0 // 播放状态 0：暂停 1：播放 2：没有音乐播放
+  },
   currentPlaySong: {
     // 当前播放歌曲信息
     id: '',
@@ -14,8 +19,8 @@ const state = {
 }
 
 const mutations = {
-  SET_PLAYERSTATUS(state: any, item: any) {
-    state.playerStatus = item
+  SET_PLAYERSTATE(state: any, item: any) {
+    state.playerState = item
   },
   SET_CURRENTPLAYSONG(state: any, item: any) {
     state.currentPlaySong = item

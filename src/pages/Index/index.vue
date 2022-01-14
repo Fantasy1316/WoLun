@@ -221,7 +221,7 @@ const handlePlayCurrentSong = (data: any) => {
     coverImg,
     bgiUrl
   })
-  store.commit('SET_PLAYERSTATUS', 1)
+  store.commit('SET_PLAYERSTATE', 1)
   handleNavigateTo('/pages/SongDetail/index')
 }
 </script>

@@ -151,7 +151,7 @@ watch(
   position: fixed;
   left: 20rpx;
   right: 20rpx;
-  bottom: -840rpx;
+  bottom: -860rpx;
   display: flex;
   flex-direction: column;
   height: 800rpx;
