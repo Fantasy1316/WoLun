@@ -38,7 +38,7 @@ uni.onBackgroundAudioPause(async () => {
 })
 
 const handlePlayerEvent = async () => {
-  const state = await uni.getBackgroundAudioPlayerState()
+  const state = await uni.getBackgroundAudioPlayerState()  
   const { duration, currentPosition, status } = state as any
   store.commit('SET_PLAYERSTATE', { duration, currentPosition, status })
 }

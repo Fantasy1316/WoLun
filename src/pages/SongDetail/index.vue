@@ -18,7 +18,9 @@
             {{ handleTimeFormat(currentPosition) }}
           </p>
           <div class="progress-main">
-            <p class="main-line"></p>
+            <p class="main-line">
+              <p class="main-line--inner" :style="progress"></p>
+            </p>
           </div>
           <p class="progress-time">
             {{ handleTimeFormat(playerState.duration) }}
@@ -46,21 +48,14 @@
 </template>
 
 <script setup lang="ts">
-import {
-  ref,
-  computed,
-  onMounted,
-  onBeforeMount,
-  watch,
-  onBeforeUnmount
-} from 'vue'
+import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
+import useProgress from './useProgress'
 import PlayerList from '@/components/PlayerList/index.vue'
 
 const store = useStore()
 const currentPlaySong = computed(() => store.state.player.currentPlaySong)
 const playerState = computed(() => store.state.player.playerState)
-console.log(playerState.value)
 
 // 播放列表显示/隐藏
 const playerListShow = ref(false)
@@ -70,7 +65,7 @@ const handleSetPlayerListShow = () => {
 
 // 页面背景图
 const containerBgi = computed(() => ({
-  background: `url(${currentPlaySong.value.bgiUrl}) no-repeat`,
+  background: `url(${currentPlaySong.value.coverImg}?imageMogr2/blur/50x100) no-repeat`,
   backgroundSize: 'auto 100%',
   backgroundPosition: 'center top'
 }))
@@ -98,33 +93,7 @@ const handleSetPlayerState = () => {
 }
 
 // 进度 时间
-const currentPosition = ref(0)
-let timer = setInterval(() => {
-  currentPosition.value += 1
-}, 1000)
-
-const handleTimerInit = () => {
-  clearInterval(timer)
-  timer = setInterval(() => {
-    currentPosition.value += 1
-  }, 1000)
-}
-
-watch(
-  () => playerState.value,
-  (newVal: any) => {
-    currentPosition.value = newVal.currentPosition
-
-    if (newVal.status === 1) {
-      handleTimerInit()
-    } else {
-      clearInterval(timer)
-    }
-  },
-  {
-    immediate: true
-  }
-)
+const { currentPosition, progress } = useProgress()
 
 // 处理时间
 const handleTimeFormat = (time: number) => {
@@ -138,10 +107,6 @@ const handleTimeFormat = (time: number) => {
     return `00:${time >= 10 ? time : '0' + time}`
   }
 }
-
-onBeforeUnmount(() => {
-  clearInterval(timer)
-})
 </script>
 
 <style lang="scss" scoped>
@@ -233,15 +198,15 @@ onBeforeUnmount(() => {
             border-radius: 4rpx;
             background-color: rgba(255, 255, 255, 0.2);
 
-            &:after {
-              content: '';
+            &--inner {
               position: absolute;
               top: 0;
               left: 0;
-              right: 90%;
+              right: 100%;
               bottom: 0;
               background-color: #fff;
               border-radius: 4rpx;
+              transition: all 0.1s linear;
             }
           }
         }
